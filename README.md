@@ -1,6 +1,6 @@
 # Installation
 ```shell
-helm plugin install https://github.com/pharmaledgerassoc/helm-pl-plugin
+helm plugin install https://github.com/pharmaledgerassoc/helm-plugins
 ```
 #Plugin Commands
 ##NewNetwork
