@@ -2,6 +2,7 @@ const constants = require("../constants");
 const path = require("path");
 const fs = require("fs");
 const utils = require("../utils");
+const childProcess = require("child_process");
 
 function getAccountInfo(config) {
     let orgAcc;
@@ -206,7 +207,7 @@ function deploySmartContractsAndStoreInfo(config) {
         }
 
         storeSmartContractsInfo(config.outputPath, contractsInfo, config);
-        if (config.git_upload.enabled) {
+        if (config && config.git_upload && config.git_upload.enabled) {
             uploadContractsInfo(contractsInfo, config);
         }
 

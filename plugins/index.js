@@ -47,7 +47,7 @@ function showHelp(){
         '--joinNetwork          generate crypto for the joining node\n'+
         '--updatePartnersInfo   aggregates the information regarding partners present in the network\n'+
         '--ethAdapter   Demo code for aggregation\n' +
-        '--ethereumSC   deploys smart contracts\n\n');
+        '--smartContract   deploys smart contracts\n\n');
 }
 
 processFlags();
