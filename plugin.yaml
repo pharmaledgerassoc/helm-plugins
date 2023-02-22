@@ -1,0 +1,10 @@
+name: "pl-plugin"
+version: "0.1.0"
+usage: "helm pl-plugin -i <input values> -o <output values>"
+description: |-
+  A helm plugin to allow for easy Generation of crypto material, Aggregation of data and Usecase deployment.
+command: "node $HELM_PLUGIN_DIR/plugins/index.js"
+hooks:
+  install: "cd $HELM_PLUGIN_DIR/plugins; npm install --production"
+  update: "cd $HELM_PLUGIN_DIR/plugins; npm install --production"
+
