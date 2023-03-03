@@ -1,0 +1,4 @@
+smart_contracts:
+  - git_upload_smart_contract_filename: "anchoring.json"
+    smart_contract_name: "anchoring"
+    smart_contract_location: "https://raw.githubusercontent.com/OpenDSU/eth-adapter/master/SmartContracts/contracts/Anchoring.sol"

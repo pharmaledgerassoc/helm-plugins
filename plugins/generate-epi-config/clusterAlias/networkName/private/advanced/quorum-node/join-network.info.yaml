@@ -1,0 +1,12 @@
+use_case:
+  newNetwork:
+    enabled: false
+  joinNetwork:
+    # -- Enable the join-network use case. Can only be used in collaboration with updatePartnerInfo use case
+    enabled: true
+
+# overwrites service
+service:
+  p2p:
+    # NodePort, LoadBalancer, ClusterIP
+    type: LoadBalancer

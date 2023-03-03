@@ -31,6 +31,10 @@ function processFlags(){
         fnToExecute = require('./upload-info').uploadQuorumNodeInfo;
     }
 
+    if(argv.generateEpiConfig){
+        fnToExecute = require('./generate-epi-config').generateEpiConfig;
+    }
+
     if (typeof fnToExecute !== "function") {
         return showHelp();
     }
@@ -47,7 +51,8 @@ function showHelp(){
         '--joinNetwork          generate crypto for the joining node\n'+
         '--updatePartnersInfo   aggregates the information regarding partners present in the network\n'+
         '--ethAdapter   Demo code for aggregation\n' +
-        '--smartContract   deploys smart contracts\n\n');
+        '--smartContract   deploys smart contracts\n' +
+        '--generateEpiConfig   generates config files for epi deployment\n\n');
 }
 
 processFlags();

@@ -1,0 +1,15 @@
+image:
+  # -- The repository of the container image
+  repository: "PLACEHOLDER_organization/ethadapter"
+  # -- Image Pull Policy
+  pullPolicy: Always
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: "PLACEHOLDER_ethadapterVersion"
+  # -- sha256 digest of the image.
+  # Do not add the prefix "@sha256:"
+  # Default to image digest for version 1.0.2
+  # <!-- # pragma: allowlist secret -->
+  sha: "PLACEHOLDER_ethadapterSHA"  # pragma: allowlist secret
+
+fullnameOverride: "ethadapter"
+smartContractInfoName: "anchoring.json"

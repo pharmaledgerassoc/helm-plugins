@@ -1,0 +1,5 @@
+# overwrites service
+service:
+  p2p:
+    # NodePort, LoadBalancer, ClusterIP
+    type: ClusterIP
