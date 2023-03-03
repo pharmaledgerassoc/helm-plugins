@@ -45,15 +45,6 @@ const generateEpiConfig = (input, outputPath) => {
             outPath = outPath.replace(CLUSTER_ALIAS, input.clusterAlias);
             outPath = outPath.replace(NETWORK_NAME, input.networkName);
             fs.mkdirSync(outPath.replace(path.basename(outPath), ''), {recursive: true})
-            let err;
-            try{
-                fs.accessSync(outPath);
-            }catch (e) {
-                err = e;
-            }
-            if (!err) {
-                fs.unlinkSync(outPath);
-            }
             fs.appendFileSync(outPath, processedLine);
         }
     }
