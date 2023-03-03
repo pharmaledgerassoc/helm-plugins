@@ -34,18 +34,23 @@ const generateEpiConfig = (input, outputPath) => {
         let lines = fileContent.split("\n");
         for (let line of lines) {
             const index = line.indexOf(PLACEHOLDER_PREFIX);
-            let newLine = line;
+            let processedLine = line;
             if (index >= 0) {
                 let placeholder = getWordEndAtIndex(line.slice(index));
                 let prop = placeholder.slice(placeHolderPrefixLength);
-                newLine = line.replace(placeholder, input[prop]);
+                processedLine = line.replace(placeholder, input[prop]);
             }
-            newLine += "\n";
-            let newPath = path.join(outputPath, path.relative(__dirname, filePath));
-            newPath = newPath.replace(CLUSTER_ALIAS, input.clusterAlias);
-            newPath = newPath.replace(NETWORK_NAME, input.networkName);
-            fs.mkdirSync(newPath.replace(path.basename(newPath), ''), {recursive: true})
-            fs.appendFileSync(newPath, newLine);
+            processedLine += "\n";
+            let outPath = path.join(outputPath, path.relative(__dirname, filePath));
+            outPath = outPath.replace(CLUSTER_ALIAS, input.clusterAlias);
+            outPath = outPath.replace(NETWORK_NAME, input.networkName);
+            fs.mkdirSync(outPath.replace(path.basename(outPath), ''), {recursive: true})
+            try{
+                fs.accessSync(outPath);
+            }catch (e) {
+                fs.unlinkSync(outPath);
+            }
+            fs.appendFileSync(outPath, processedLine);
         }
     }
 
