@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const BASE_PATH = "./clusterAlias";
+const CLUSTER_ALIAS = "clusterAlias";
+const NETWORK_NAME = "networkName";
+const BASE_PATH = path.join(__dirname, CLUSTER_ALIAS);
 const PLACEHOLDER_PREFIX = "PLACEHOLDER_";
 const placeHolderPrefixLength = PLACEHOLDER_PREFIX.length;
 function walkDir(dir, callback) {
@@ -37,11 +39,11 @@ const generateEpiConfig = (input, outputPath) => {
                 let placeholder = getWordEndAtIndex(line.slice(index));
                 let prop = placeholder.slice(placeHolderPrefixLength);
                 newLine = line.replace(placeholder, input[prop]);
-                console.log(newLine);
             }
             newLine += "\n";
-            let newPath = filePath.replace("clusterAlias", input.clusterAlias);
-            newPath = path.join(outputPath, newPath.replace("networkName", input.networkName));
+            let newPath = path.join(outputPath, path.relative(__dirname, filePath));
+            newPath = newPath.replace(CLUSTER_ALIAS, input.clusterAlias);
+            newPath = newPath.replace(NETWORK_NAME, input.networkName);
             fs.mkdirSync(newPath.replace(path.basename(newPath), ''), {recursive: true})
             fs.appendFileSync(newPath, newLine);
         }
