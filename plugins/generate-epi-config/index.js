@@ -51,7 +51,7 @@ const generateEpiConfig = (input, outputPath) => {
             }catch (e) {
                 err = e;
             }
-            if (err) {
+            if (!err) {
                 fs.unlinkSync(outPath);
             }
             fs.appendFileSync(outPath, processedLine);
