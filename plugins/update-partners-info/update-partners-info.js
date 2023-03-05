@@ -21,6 +21,10 @@ async function aggregatePartnersInfo(config, outputPath) {
         const enodeDataPath = path.join(peerDataPath, "enode");
         const validatorData = fs.readFileSync(validatorDataPath, "utf-8");
         const enodeData = fs.readFileSync(enodeDataPath, "utf-8");
+        
+        console.log(peerDataPath)
+        console.log(validatorDataPath)
+        console.log(enodeDataPath)
 
         publicJson.peers.push(parsePeerData(enodeData, validatorData));
     }
