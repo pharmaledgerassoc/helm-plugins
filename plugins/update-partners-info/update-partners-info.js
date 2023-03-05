@@ -6,8 +6,6 @@ async function aggregatePartnersInfo(config, outputPath) {
     if (!config.use_case.updatePartnersInfo.enabled) {
         return console.log('Error : values.yaml file has not enabled the updatePartnersInfo use case. Please review the input values.yaml configuration and execute the correct plugin for the configured use case !');
     }
-    
-    console.log(config);
 
     const generatedInfoFile = path.resolve(outputPath, 'update-partners-info.plugin.json');
     const publicJson = {};
@@ -17,15 +15,9 @@ async function aggregatePartnersInfo(config, outputPath) {
     const {sharedRepoPath} = utils.cloneSharedRepo(config);
     const partnersDataPath = path.join(sharedRepoPath, "editable");
     
-    console.log(sharedRepoPath);
-    console.log(partnersDataPath);
-    
     for (let i = 0; i < peers.length; i++) {
         const peerDataPath = path.join(partnersDataPath, peers[i]);
-        const validatorDataPath = path.join(peerDataPath, "validator");
-        
-        console.log(validatorPath);
-        
+        const validatorDataPath = path.join(peerDataPath, "validator");        
         const enodeDataPath = path.join(peerDataPath, "enode");
         const validatorData = fs.readFileSync(validatorDataPath, "utf-8");
         const enodeData = fs.readFileSync(enodeDataPath, "utf-8");
