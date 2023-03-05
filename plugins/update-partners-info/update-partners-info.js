@@ -14,6 +14,9 @@ async function aggregatePartnersInfo(config, outputPath) {
     const peers = config.use_case.updatePartnersInfo.peers;
     const {sharedRepoPath} = utils.cloneSharedRepo(config);
     const partnersDataPath = path.join(sharedRepoPath, "editable");
+    
+    console.log(partnersDataPath);
+    
     for (let i = 0; i < peers.length; i++) {
         const peerDataPath = path.join(partnersDataPath, peers[i]);
         const validatorDataPath = path.join(peerDataPath, "validator");
