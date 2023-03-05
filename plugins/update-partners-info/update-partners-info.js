@@ -15,6 +15,7 @@ async function aggregatePartnersInfo(config, outputPath) {
     const {sharedRepoPath} = utils.cloneSharedRepo(config);
     const partnersDataPath = path.join(sharedRepoPath, "editable");
     
+    console.log(sharedRepoPath);
     console.log(partnersDataPath);
     
     for (let i = 0; i < peers.length; i++) {
