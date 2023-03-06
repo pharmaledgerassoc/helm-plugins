@@ -1,20 +1,24 @@
 deployment:
   # -- The Quorum node public ip address (ingress Quorum node address)
-  enode_address: "15.237.22.125"
+  enode_address: "0.0.0.0"
   # -- The Port of the Quorum node public address
   enode_address_port: "30303"
   # -- NAT address, used for firewall configuration
-  NAT: "52.47.91.48"
+  NAT: "1.2.3.4"
 
 fullnameOverride: "quorum"
 
-#image:
-#  # -- The organization of the Quorum container image
-#  organization: quorumengineering/quorum
-#  # -- Image Pull Policy
-#  pullPolicy: Always
-#  # -- Image tag
-#  tag: "21.7.1"
-#  # -- sha256 digest of the image.
-#  # Do not add the prefix "@sha256:"
-#  sha: "17fdaa26ae682bd7ba1ee0f9cc957fc07582b53aa6c2a6bc800f29c3ad28289e"
+# Persistence using Persistent Volume Claims
+# See [http://kubernetes.io/docs/user-guide/persistent-volumes/](http://kubernetes.io/docs/user-guide/persistent-volumes/)
+persistence:
+  # Settings for the data PVC.
+  data:
+    # -- Size of the data PVC volume.
+    size: "20Gi"
+  # Settings for the logging PVC.
+  logs:
+    # -- Enables logging to a persistent volume.
+    # if disabled, logging will be to stdout only.
+    enabled: true
+    # -- Size of the logs PVC volume.
+    size: "5Gi"
