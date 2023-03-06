@@ -14,12 +14,17 @@ async function aggregatePartnersInfo(config, outputPath) {
     const peers = config.use_case.updatePartnersInfo.peers;
     const {sharedRepoPath} = utils.cloneSharedRepo(config);
     const partnersDataPath = path.join(sharedRepoPath, "editable");
+    
     for (let i = 0; i < peers.length; i++) {
         const peerDataPath = path.join(partnersDataPath, peers[i]);
-        const validatorDataPath = path.join(peerDataPath, "validator");
+        const validatorDataPath = path.join(peerDataPath, "validator");        
         const enodeDataPath = path.join(peerDataPath, "enode");
         const validatorData = fs.readFileSync(validatorDataPath, "utf-8");
         const enodeData = fs.readFileSync(enodeDataPath, "utf-8");
+        
+        console.log(peerDataPath)
+        console.log(validatorDataPath)
+        console.log(enodeDataPath)
 
         publicJson.peers.push(parsePeerData(enodeData, validatorData));
     }
