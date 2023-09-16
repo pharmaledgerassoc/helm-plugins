@@ -136,7 +136,7 @@ function uploadContractsInfo(contractsInfo, config) {
 
     childProcess.execSync(`cd ${sharedRepoPath} && git add .`);
     childProcess.execSync(`cd ${sharedRepoPath} && git commit -m "${constants.COMMIT_MESSAGES.SMART_CONTRACT_UPDATE}"`);
-    childProcess.execSync(`cd ${sharedRepoPath} && git push`);
+    childProcess.execSync(`cd ${sharedRepoPath} && git push origin master`);
     fs.rmSync(tmpDir, {recursive: true})
     console.log("Smart contract info was stored successfully");
 }
