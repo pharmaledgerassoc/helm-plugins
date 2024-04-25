@@ -79,7 +79,7 @@ function uploadQuorumNodeInfo(config) {
 
     childProcess.execSync(`cd ${sharedRepoPath} && git add .`);
     childProcess.execSync(`cd ${sharedRepoPath} && git commit -m "${constants.COMMIT_MESSAGES.ENODE_INFO_UPDATE}"`);
-    childProcess.execSync(`cd ${sharedRepoPath} && git push origin master`);
+    childProcess.execSync(`cd ${sharedRepoPath} && git push`);
     fs.rmSync(tmpDir, {recursive: true});
     console.log("Uploaded enode and validator public key successfully");
 }
