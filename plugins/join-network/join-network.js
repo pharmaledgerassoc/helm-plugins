@@ -9,10 +9,11 @@ async function generateNodeCrypto(config, outputPath) {
     }
     const token = config.git_shared_configuration.read_write_token;
     const repoName = config.git_shared_configuration.repository_name;
+    const branch = config.git_shared_configuration.branch;
     const baseShareFolder = "networks";
     const networkName = config.deployment.network_name;
     const genesisFileName = constants.PATHS.GENESIS_FILE;
-    const genesisUrl = `https://raw.githubusercontent.com/${repoName}/master/${baseShareFolder}/${networkName}/${genesisFileName}`
+    const genesisUrl = `https://raw.githubusercontent.com/${repoName}/${branch}/${baseShareFolder}/${networkName}/${genesisFileName}`
     console.log("genesis url", genesisUrl);
     console.log("output path", outputPath);
     const generatedInfoFile = path.resolve(outputPath, 'join-network.plugin.json');
