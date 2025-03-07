@@ -6,5 +6,5 @@ helm plugin install https://github.com/pharmaledgerassoc/helm-plugins
 ##NewNetwork
 Invoke example : 
 ```shell
-helm plugin-name --newNetwork --i=<path to values.yaml> --o==<output path>
+helm pl-plugin --newNetwork -i <path to values.yaml> -o <output path>
 ```
